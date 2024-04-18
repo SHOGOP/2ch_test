@@ -1,0 +1,15 @@
+# 同じUIDが存在しないイメージ
+FROM ubuntu
+
+WORKDIR /app
+
+ARG UID
+ARG GID
+ARG USERNAME
+
+ENV UID ${UID}
+ENV GID ${GID}
+ENV USERNAME ${USERNAME}
+
+RUN groupadd -g ${GID} ${USERNAME}
+RUN useradd -u ${UID} -g ${USERNAME} -m ${USERNAME}
